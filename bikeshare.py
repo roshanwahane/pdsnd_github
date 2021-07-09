@@ -1,4 +1,4 @@
-
+# importing required libraries
 import time
 import pandas as pd
 import numpy as np
@@ -90,13 +90,13 @@ def load_data(city, month, day):
     df["Start Time"] = pd.to_datetime(df["Start Time"]) #converting date to datetime
     df["Month"] = df["Start Time"].dt.month_name() #extracting month from date
     df["Day_of_week"] = df["Start Time"].dt.day_name() #extracting day of week from date
-    
+
     if month.lower() != "all":
         df = df[df["Month"] == month.title()]
-    
+
     if day.lower() != "all":
         df = df[df["Day_of_week"] == day.title()]
-        
+
     return df
 
 
@@ -121,7 +121,7 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 
 
 def station_stats(df):
@@ -173,8 +173,8 @@ def user_stats(df):
     # TO DO: Display counts of user types
     user_type = df["User Type"].value_counts()
     print("The counts of user types are:\n",user_type.to_string())
-    
-    
+
+
     if "Gender" in df.columns:
             # TO DO: Display counts of gender
             gender_counts = df["Gender"].value_counts()
@@ -182,7 +182,7 @@ def user_stats(df):
     else:
         pass
         #print("Gender column is not available for this city.")
-        
+
     if "Birth Year" in df.columns:
         # TO DO: Display earliest, most recent, and most common year of birth
         early_dob = df["Birth Year"].min()
@@ -194,15 +194,15 @@ def user_stats(df):
     else:
         pass
         #print("Birth year column is not available for this city.")
-       
-        
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-    
+
 def print_raw_data(df): #function to ask if the user wishes to see raw data
-    start = 0
-    end = 6
+    begin = 0 #start index for iloc below
+    end = 6 #end index for iloc below
     while True:
         try:
             raw_data = str(input("Would you like to display individual data trip (5 rows)? Enter 'yes' or 'no':\n"))
@@ -215,14 +215,14 @@ def print_raw_data(df): #function to ask if the user wishes to see raw data
             continue
         else:
             if raw_data.lower() == "yes":
-                print(df.iloc[start:end, :])
-                start += 6
-                end += 5
+                print(df.iloc[begin:end, :])
+                begin += 6 #adding 5 next rows as per user request
+                end += 5 #adding 5 to the variable
                 continue
             else:
                break
 
-            
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -234,7 +234,7 @@ def main():
         user_stats(df)
         print_raw_data(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no:\n')
+        restart = input('\nWould you like to restart the program? Enter yes or no:\n')
         if restart.lower() != 'yes':
             break
 
