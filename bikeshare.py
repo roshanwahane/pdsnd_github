@@ -201,8 +201,8 @@ def user_stats(df):
 
 
 def print_raw_data(df): #function to ask if the user wishes to see raw data
-    start = 0
-    end = 6
+    start = 0 #start index for iloc below
+    end = 6 #end index for iloc below
     while True:
         try:
             raw_data = str(input("Would you like to display individual data trip (5 rows)? Enter 'yes' or 'no':\n"))
@@ -216,7 +216,7 @@ def print_raw_data(df): #function to ask if the user wishes to see raw data
         else:
             if raw_data.lower() == "yes":
                 print(df.iloc[start:end, :])
-                start += 6
+                start += 6 
                 end += 5
                 continue
             else:
