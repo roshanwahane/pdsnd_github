@@ -64,7 +64,7 @@ Data files: -
 </ul>
 
 ### Credits
-Refrences: -
+<b>Refrences: -</b>
 
 Stack Overflow. 2021. Asking the user for input until they give a valid response. [online] Available at: <https://stackoverflow.com/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response> [Accessed 18 June 2021].
 
