@@ -201,7 +201,7 @@ def user_stats(df):
 
 
 def print_raw_data(df): #function to ask if the user wishes to see raw data
-    start = 0 #start index for iloc below
+    begin = 0 #start index for iloc below
     end = 6 #end index for iloc below
     while True:
         try:
@@ -215,9 +215,9 @@ def print_raw_data(df): #function to ask if the user wishes to see raw data
             continue
         else:
             if raw_data.lower() == "yes":
-                print(df.iloc[start:end, :])
-                start += 6 
-                end += 5
+                print(df.iloc[begin:end, :])
+                begin += 6 #adding 5 next rows as per user request
+                end += 5 #adding 5 to the variable
                 continue
             else:
                break
@@ -234,7 +234,7 @@ def main():
         user_stats(df)
         print_raw_data(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no:\n')
+        restart = input('\nWould you like to restart the program? Enter yes or no:\n')
         if restart.lower() != 'yes':
             break
 
